@@ -1,0 +1,11 @@
+#include <iostream>
+
+int main() {
+    std::cout << "First Name: Steven\n";
+    std::cout << "Last Name: McSteven\n";
+    std::cout << "Street Address: 123 Stevenson Street\n";
+    std::cout << "City: Stevensville\n";
+    std::cout << "Zip Code: 12345\n";
+
+    return 0;
+}
