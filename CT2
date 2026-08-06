@@ -1,0 +1,137 @@
+#include <iostream>
+#include <string>
+#include <cctype>
+
+// Bools to check strings
+// Checks whether a string contains only numbers
+bool containsOnlyNumbers(const std::string& input)
+{
+    for (char character : input)
+    {
+        if (!std::isdigit(character))
+        {
+            return false;
+        }
+    }
+
+    return true;
+}
+// Checks whether a string contains only letters
+bool containsOnlyLetters(const std::string& input)
+{
+    for (char character : input)
+    {
+        if (!std::isalpha(character))
+        {
+            return false;
+        }
+    }
+
+    return true;
+}
+
+int main()
+{
+    std::string zipCode;
+    std::string stateCode;
+    std::string firstName;
+    std::string lastName;
+    std::string month;
+    std::string year;
+
+    // Input Set #1: ZIP Code and State Code
+    do
+    {
+        std::cout << "Enter your 5-digit ZIP code: ";
+        std::getline(std::cin, zipCode);
+
+        if (zipCode.length() != 5 || !containsOnlyNumbers(zipCode))
+        {
+            std::cout << "Invalid ZIP code. Enter exactly 5 numbers.\n";
+        }
+
+    } while (zipCode.length() != 5 || !containsOnlyNumbers(zipCode));
+
+    do
+    {
+        std::cout << "Enter your 2-letter state code: ";
+        std::getline(std::cin, stateCode);
+
+        if (stateCode.length() != 2 || !containsOnlyLetters(stateCode))
+        {
+            std::cout << "Invalid state code. Enter exactly 2 letters.\n";
+        }
+
+    } while (stateCode.length() != 2 || !containsOnlyLetters(stateCode));
+
+    // Concatenate ZIP code and state code
+    std::string location = zipCode + " " + stateCode;
+
+    std::cout << "Location: " << location << "\n\n";
+
+    // Input Set #2: First and Last Name
+
+    do
+    {
+        std::cout << "Enter your first name: ";
+        std::getline(std::cin, firstName);
+
+        if (firstName.empty() || !containsOnlyLetters(firstName))
+        {
+            std::cout << "Invalid first name. Use letters only.\n";
+        }
+
+    } while (firstName.empty() || !containsOnlyLetters(firstName));
+
+    do
+    {
+        std::cout << "Enter your last name: ";
+        std::getline(std::cin, lastName);
+
+        if (lastName.empty() || !containsOnlyLetters(lastName))
+        {
+            std::cout << "Invalid last name. Use letters only.\n";
+        }
+
+    } while (lastName.empty() || !containsOnlyLetters(lastName));
+    // Concatenate first and last name
+    std::string fullName = firstName + " " + lastName;
+
+    std::cout << "Full Name: " << fullName << "\n\n";
+
+    // Input Set #3: Month and Year
+    do
+    {
+        std::cout << "Enter birth month: ";
+        std::getline(std::cin, month);
+
+        if (month.empty() || !containsOnlyLetters(month))
+        {
+            std::cout << "Invalid month. Use letters only.\n";
+        }
+
+    } while (month.empty() || !containsOnlyLetters(month));
+
+    do
+    {
+        std::cout << "Enter birth year: ";
+        std::getline(std::cin, year);
+
+        if (year.length() != 4 || !containsOnlyNumbers(year))
+        {
+            std::cout << "Invalid year. Enter exactly 4 numbers.\n";
+        }
+
+    } while (year.length() != 4 || !containsOnlyNumbers(year));
+    // Concatenate month and year
+    std::string date = month + " " + year;
+
+    std::cout << "Month and Year: " << date << std::endl;
+
+    // Final Output
+    std::cout << "\nEntered Information:\n";
+    std::cout << "Location: " << location << std::endl;
+    std::cout << "Full Name: " << fullName << std::endl;
+    std::cout << "Month and Year: " << date << std::endl;
+    return 0;
+}
